@@ -22,6 +22,13 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
+Route::middleware('auth:sanctum')->post('/logout', function (Request $request) {
+    $request->user()->tokens()->delete();
+    // $request->user()->tokens()->where('id', $tokenId)->delete();
+
+    return response('Loggendout', 200);
+});
+
 Route::post('/sanctum/token', function (Request $request) {
     $request->validate([
         'email' => 'required|email',
