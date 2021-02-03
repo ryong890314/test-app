@@ -4,8 +4,11 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 use App\Models\User;
+use App\Models\Category;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\ValidationException;
+
+use App\Http\Controllers\CategoryController;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,6 +20,8 @@ use Illuminate\Validation\ValidationException;
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
+
+Route::post('category', [CategoryController::class, 'list']);
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
@@ -40,7 +45,8 @@ Route::post('/sanctum/token', function (Request $request) {
 
     if (! $user || ! Hash::check($request->password, $user->password)) {
         throw ValidationException::withMessages([
-            'email' => ['The provided credentials are incorrect.'],
+            // 'email' => ['The provided credentials are incorrect.'],
+            'email' => ['회원정보가 일치하지 않습니다.'],
         ]);
     }
 
