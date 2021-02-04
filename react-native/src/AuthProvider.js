@@ -42,15 +42,29 @@ export const AuthProvider = ({children}) => {
         logout: () => {
           axios.defaults.headers.common['Authorization'] = `Bearer ${user.token}`;
 
-          axios.post('/api/logout')
+          const tokenId = user.token.split('|')[0];
+          
+          axios.post('/api/logout', {
+            tokenId: tokenId,
+          })
           .then(response => {
             setUser(null);
-            SecureStore.deleteItemAsync('user')
+            console.log(tokenId);
+            SecureStore.deleteItemAsync('user');
+
           })
           .catch(error => {
             console.log(error.response);
           })
-        }
+        },
+
+        // 리셋
+        reset: () => {
+          SecureStore.deleteItemAsync('user');
+          console.log('reset');
+        },
+        //
+        
       }}>
       {children}
     </AuthContext.Provider>

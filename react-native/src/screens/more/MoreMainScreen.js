@@ -2,9 +2,10 @@ import React, { useContext } from 'react';
 import { Text, View, Button } from 'react-native';
 import { AuthContext } from "../../AuthProvider";
 
+
 function MoreMainScreen() {
 
-  const { user, logout } = useContext(AuthContext);
+  const { user, logout, reset } = useContext(AuthContext);
   
 
   // useEffect(() => {
@@ -24,6 +25,9 @@ function MoreMainScreen() {
     <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
       <Text>User : {user.id} | {user.email}</Text>
       <Button title="Logout" onPress={() => logout()} />
+      
+      <Button title="reset" onPress={() => reset()} />
+
     </View>
   );
 }

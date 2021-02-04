@@ -21,15 +21,19 @@ use App\Http\Controllers\CategoryController;
 |
 */
 
-Route::post('category', [CategoryController::class, 'list']);
+Route::middleware('auth:sanctum')->post('category', [CategoryController::class, 'list']);
+
+Route::post('category/create', [CategoryController::class, 'create']);
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
 Route::middleware('auth:sanctum')->post('/logout', function (Request $request) {
-    $request->user()->tokens()->delete();
-    // $request->user()->tokens()->where('id', $tokenId)->delete();
+    // $request->user()->tokens()->delete();
+    $tokenId = $request -> only('tokenId');
+    
+    $request->user()->tokens()->where('id', $tokenId)->delete();
 
     return response('Loggendout', 200);
 });

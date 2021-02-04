@@ -19,4 +19,19 @@ class CategoryController extends Controller
 
         return Category::where('id', $categoryId)->get();
    }
+
+   public function create(Request $request)
+   {
+     $category = new Category;
+
+     $category -> id = $request -> id;
+     $category -> name = $request -> name;
+     $category -> open_scope = $request -> open_scope;
+     $category -> start_date = $request -> start_date;
+     $category -> end_date = $request -> end_date;
+
+     $category->save();
+
+     return response() -> json(['message' => 'create successful', 'code' => 200]);
+   }
 }
