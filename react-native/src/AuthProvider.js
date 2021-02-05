@@ -49,7 +49,6 @@ export const AuthProvider = ({children}) => {
           })
           .then(response => {
             setUser(null);
-            console.log(tokenId);
             SecureStore.deleteItemAsync('user');
 
           })

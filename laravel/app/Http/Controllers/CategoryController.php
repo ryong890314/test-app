@@ -15,9 +15,9 @@ class CategoryController extends Controller
     */
    public function list(Request $request)
    {
-        $categoryId = $request -> only('id');
+        $userId = $request -> only('id');
 
-        return Category::where('id', $categoryId)->get();
+        return Category::where('id', $userId)->get();
    }
 
    public function create(Request $request)
@@ -34,4 +34,31 @@ class CategoryController extends Controller
 
      return response() -> json(['message' => 'create successful', 'code' => 200]);
    }
+
+   public function detail(Request $request)
+   {
+    $categoryId = $request -> only('category_id');
+
+    return Category::where('category_id', $categoryId)->first();
+   }
+
+   public function update(Request $request)
+   {
+    $categoryId = $request -> only('category_id');
+    $categoryName = $request -> name;
+
+     Category::where('category_id', $categoryId)->update(
+       ['name' => $categoryName]
+     );
+
+     return $categoryName;
+   }
+
+   public function delete(Request $request)
+   {
+    $categoryId = $request -> only('category_id');
+
+    Category::where('category_id', $categoryId)->delete();
+   }
+
 }

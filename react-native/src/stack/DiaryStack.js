@@ -5,6 +5,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome'
 import { faPlus } from '@fortawesome/free-solid-svg-icons'
 import DiaryMainScreen from "../screens/diary/DiaryMainScreen"
 import CategoryCreateScreen from "../screens/diary/CategoryCreateScreen"
+import CategoryUpdateScreen from "../screens/diary/CategoryUpdateScreen"
 import { Button, TouchableOpacity } from "react-native";
 
 const Stack = createStackNavigator();
@@ -31,6 +32,12 @@ export const DiaryStack = ( {navigation} ) => {
       <Stack.Screen
         name="CategoryCreate"
         component={CategoryCreateScreen}
+        options={{
+          title: '나만의 일기'
+          }}/>
+      <Stack.Screen
+        name="CategoryUpdate"
+        component={CategoryUpdateScreen}
         options={{
           title: '나만의 일기'
           }}/>

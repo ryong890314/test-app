@@ -1,11 +1,14 @@
 import React, { useContext, useState, useEffect } from "react";
-import { FlatList, ListItem, Text, View, Button } from 'react-native';
+import { FlatList, ListItem, Text, View, Button, TouchableOpacity } from 'react-native';
 import { AuthContext } from "../../AuthProvider";
+import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome'
+import { faEllipsisH } from '@fortawesome/free-solid-svg-icons'
+
 import axios from 'axios';
 
 axios.defaults.baseURL = 'http://192.168.0.39';
 
-function DiaryMainScreen( {navigation} ) {
+function DiaryMainScreen( {navigation, route} ) {
 
   const { user, logout } = useContext(AuthContext)
   const [categoryList, setCategoryList] = useState(null);
@@ -13,7 +16,6 @@ function DiaryMainScreen( {navigation} ) {
 
   useEffect(() => {
 
-    // 화면전환 refrash
     const unsubscribe = navigation.addListener('focus', () => {
 
     axios.defaults.headers.common['Authorization'] = `Bearer ${user.token}`;
@@ -44,7 +46,10 @@ function DiaryMainScreen( {navigation} ) {
         data= {categoryList}
         renderItem={({item}) =>
         <View>
-          <Text>{item.id} | {item.name} | {item.open_scope}</Text>
+          <Text>{item.category_id} | {item.id} | {item.name} | {item.open_scope}</Text>
+          <TouchableOpacity onPress={() => navigation.navigate('CategoryUpdate', {category_id: item.category_id})}>
+              <FontAwesomeIcon icon={ faEllipsisH } color={ '#999999' } size={ 20 }/>
+            </TouchableOpacity>
         </View>
         }
         keyExtractor={item => item.category_id.toString()}

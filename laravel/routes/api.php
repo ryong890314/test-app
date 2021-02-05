@@ -21,9 +21,12 @@ use App\Http\Controllers\CategoryController;
 |
 */
 
+// 카테고리
 Route::middleware('auth:sanctum')->post('category', [CategoryController::class, 'list']);
-
-Route::post('category/create', [CategoryController::class, 'create']);
+Route::middleware('auth:sanctum')->post('category/create', [CategoryController::class, 'create']);
+Route::middleware('auth:sanctum')->post('category/detail', [CategoryController::class, 'detail']);
+Route::middleware('auth:sanctum')->post('category/update', [CategoryController::class, 'update']);
+Route::middleware('auth:sanctum')->post('category/delete', [CategoryController::class, 'delete']);
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
@@ -37,7 +40,6 @@ Route::middleware('auth:sanctum')->post('/logout', function (Request $request) {
 
     return response('Loggendout', 200);
 });
-
 Route::post('/sanctum/token', function (Request $request) {
     $request->validate([
         'email' => 'required|email',

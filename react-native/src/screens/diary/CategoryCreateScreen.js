@@ -20,7 +20,7 @@ export default function CategoryCreateScreen({ navigation }) {
             open_scope: 0,
         })
           .then(response => {
-            console.log(response);
+            // console.log(response);
             navigation.navigate('DiaryMain');
           })
           .catch(error => {
