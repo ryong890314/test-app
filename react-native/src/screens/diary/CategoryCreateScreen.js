@@ -15,8 +15,9 @@ export default function CategoryCreateScreen({ navigation }) {
         axios.post('/api/category/create', {
             id: `${user.id}`,
             name: `${name}`,
-            start_date: `2020-12-14 17:41:30`,
-            end_date: `2020-12-14 17:41:30`,
+            start_date: `2020-12-14`,
+            end_date: `2020-12-15`,
+            end_page: 100,
             open_scope: 0,
         })
           .then(response => {

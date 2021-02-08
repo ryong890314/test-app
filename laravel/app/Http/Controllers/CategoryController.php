@@ -26,9 +26,10 @@ class CategoryController extends Controller
 
      $category -> id = $request -> id;
      $category -> name = $request -> name;
-     $category -> open_scope = $request -> open_scope;
      $category -> start_date = $request -> start_date;
      $category -> end_date = $request -> end_date;
+     $category -> end_page = $request -> end_page;
+     $category -> open_scope = $request -> open_scope;
 
      $category->save();
 

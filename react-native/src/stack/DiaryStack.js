@@ -24,7 +24,9 @@ export const DiaryStack = ( {navigation} ) => {
             fontSize: 18,
           },
           headerRight: () => (
-            <TouchableOpacity onPress={() => navigation.navigate('CategoryCreate')}>
+            <TouchableOpacity 
+              style={{ padding: 20}}
+              onPress={() => navigation.navigate('CategoryCreate')}>
               <FontAwesomeIcon icon={ faPlus } color={ '#999999' } size={ 20 }/>
             </TouchableOpacity>
           ),
