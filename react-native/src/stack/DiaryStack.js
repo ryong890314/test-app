@@ -35,7 +35,11 @@ export const DiaryStack = ( {navigation} ) => {
         name="CategoryCreate"
         component={CategoryCreateScreen}
         options={{
-          title: '나만의 일기'
+          title: '나만의 일기',
+          headerTitleStyle: {
+            fontWeight: 'bold',
+            fontSize: 18,
+          },
           }}/>
       <Stack.Screen
         name="CategoryUpdate"

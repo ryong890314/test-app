@@ -52,9 +52,11 @@ function DiaryMainScreen( {navigation, route} ) {
           </View>
         }
         renderItem={({item}) =>
-          <View style={styles.flatlistItem}>
+          <TouchableOpacity
+            style={styles.flatlistItem}
+            onPress={() => navigation.navigate('CategoryUpdate', {category_id: item.category_id})}>
             <View  style={{width:"100%", padding: 25}}>
-              <Text style={{alignSelf: 'flex-start', position: 'absolute', padding: 10}}>공개범위 | {item.open_scope}</Text>
+              <Text style={{fontSize: 16, alignSelf: 'flex-start', position: 'absolute', padding: 10}}>공개범위 | {item.open_scope}</Text>
               <TouchableOpacity 
                 style={{alignSelf: 'flex-end', position: 'absolute', padding: 10}}
                 onPress={() => navigation.navigate('CategoryUpdate', {category_id: item.category_id})}>
@@ -64,8 +66,8 @@ function DiaryMainScreen( {navigation, route} ) {
             <Text style={{fontSize: 20, fontWeight: "bold", padding: 20}}>{item.name}</Text>
             <Text style={{fontSize: 16}}>시작날짜 | {item.start_date}</Text>
             <Text style={{fontSize: 16}}>목표날짜 | {item.end_date}</Text>
-            <Text style={{paddingTop: 25, paddingRight: 10, alignSelf: 'flex-end'}}>{item.end_page} Page</Text>
-          </View>
+            <Text style={{fontSize: 16, paddingTop: 25, paddingBottom: 10, paddingRight: 10, alignSelf: 'flex-end'}}>{item.end_page} Page</Text>
+          </TouchableOpacity>
         }
         ListFooterComponent={
           <View style={{height: 20}}></View>
@@ -95,7 +97,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#efefef',
     width:"100%",
     borderRadius:5,
-    height:240,
+    // height:240,
     marginTop:20,
     padding:10,
     alignItems: 'center',
