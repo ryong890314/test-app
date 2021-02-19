@@ -6,11 +6,24 @@ import { faPlus } from '@fortawesome/free-solid-svg-icons'
 import DiaryMainScreen from "../screens/diary/DiaryMainScreen"
 import CategoryCreateScreen from "../screens/diary/CategoryCreateScreen"
 import CategoryUpdateScreen from "../screens/diary/CategoryUpdateScreen"
-import { Button, TouchableOpacity } from "react-native";
+import { Button, TouchableOpacity, Text } from "react-native";
+
+import { getFocusedRouteNameFromRoute } from '@react-navigation/native';
 
 const Stack = createStackNavigator();
 
-export const DiaryStack = ( {navigation} ) => {
+export const DiaryStack = ( {navigation, route} ) => {
+
+  console.log(getFocusedRouteNameFromRoute(route));
+
+  React.useLayoutEffect(() => {
+    const routeName = getFocusedRouteNameFromRoute(route);
+    if (routeName == undefined || routeName == "DiaryMain") {
+        navigation.setOptions({tabBarVisible: true});
+    }else {
+        navigation.setOptions({tabBarVisible: false});
+    }
+}, [navigation, route]);
 
   return (
     <Stack.Navigator>
@@ -27,7 +40,7 @@ export const DiaryStack = ( {navigation} ) => {
             <TouchableOpacity 
               style={{ padding: 20}}
               onPress={() => navigation.navigate('CategoryCreate')}>
-              <FontAwesomeIcon icon={ faPlus } color={ '#999999' } size={ 20 }/>
+              <FontAwesomeIcon icon={ faPlus } color={ '#000000' } size={ 20 }/>
             </TouchableOpacity>
           ),
            }}/>
@@ -45,7 +58,11 @@ export const DiaryStack = ( {navigation} ) => {
         name="CategoryUpdate"
         component={CategoryUpdateScreen}
         options={{
-          title: '나만의 일기'
+          title: '나만의 일기',
+          headerTitleStyle: {
+            fontWeight: 'bold',
+            fontSize: 18,
+          },
           }}/>
     </Stack.Navigator>
   )

@@ -33,7 +33,8 @@ export const TabNavigator = () => {
             tabBarIcon: ({color}) => (
               <FontAwesomeIcon icon={ faBook } color={color} size={ 24 }/>
             ),
-          }}
+          }
+        }
         />
          {/* <Tab.Screen
           name="ExDiary"
