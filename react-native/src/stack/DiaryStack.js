@@ -14,8 +14,6 @@ const Stack = createStackNavigator();
 
 export const DiaryStack = ( {navigation, route} ) => {
 
-  console.log(getFocusedRouteNameFromRoute(route));
-
   React.useLayoutEffect(() => {
     const routeName = getFocusedRouteNameFromRoute(route);
     if (routeName == undefined || routeName == "DiaryMain") {
@@ -26,7 +24,10 @@ export const DiaryStack = ( {navigation, route} ) => {
 }, [navigation, route]);
 
   return (
-    <Stack.Navigator>
+    <Stack.Navigator
+    screenOptions={{
+      headerBackTitleVisible: false
+    }}>
       <Stack.Screen
         name="DiaryMain"
         component={DiaryMainScreen}

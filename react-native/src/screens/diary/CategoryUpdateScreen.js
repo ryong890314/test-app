@@ -12,6 +12,18 @@ import axios from 'axios';
     const [name, setName] = useState(null);
     const [loading, setLoading] = useState(true);
 
+    React.useLayoutEffect(() => {
+      navigation.setOptions({
+        headerRight: () => (
+          <TouchableOpacity 
+                style={{ paddingRight: 20 }}
+                onPress={() => categoryUpdate()}>
+                <Text style={{ fontSize: 16 }}>완료</Text>
+              </TouchableOpacity>
+        ),
+      });
+    }, [navigation, name]);
+
     function categoryUpdate() {
       axios.defaults.headers.common['Authorization'] = `Bearer ${user.token}`;
   
@@ -78,19 +90,33 @@ import axios from 'axios';
       return (<ActivityIndicator />)
     } else {
       return (
-        <View>
-          <Text>카테고리 이름</Text>
-          <TextInput  
+        <View style={{
+          flex: 1,
+          backgroundColor: '#fff',
+        }}>
+          <View style={{paddingTop: 15,}}>
+            <Text style={{color: "#000", fontSize: 20, paddingTop: 5, paddingLeft: 20, lineHeight: 30}}>
+              카테고리 설정을{"\n"}변경합니다.</Text>
+          </View>
+          <Text style={{fontSize: 14, color: "#666666", padding: 20, paddingBottom: 0}}>카테고리 이름</Text>
+          <TextInput
+            style={{fontSize: 20, fontWeight: "bold", borderBottomWidth: 1, borderBottomColor: "#666666", padding: 5, marginLeft: 20, marginRight: 20}}  
             placeholder="카테고리 이름"
             onChangeText={text => setName(text)}
             defaultValue= {categoryDetail.name}
             />
-          <Text>{categoryDetail.id} | {categoryDetail.category_id}</Text>
-          <TouchableOpacity onPress={() => categoryUpdate()}>
-            <Text>업데이트</Text>
-          </TouchableOpacity>
-          <TouchableOpacity onPress={() => categoryDelete()}>
-            <Text>삭제</Text>
+          
+          <TouchableOpacity
+            style={{
+              backgroundColor:"#E71D36",
+              borderRadius:2,
+              height:50,
+              alignItems:"center",
+              justifyContent:"center",
+              margin: 20
+            }}
+            onPress={() => categoryDelete()}>
+            <Text style={{color: "#ffffff", fontSize: 16}}>카테고리 삭제</Text>
           </TouchableOpacity>
         </View>
       );
