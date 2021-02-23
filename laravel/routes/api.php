@@ -5,10 +5,12 @@ use Illuminate\Support\Facades\Route;
 
 use App\Models\User;
 use App\Models\Category;
+use App\Models\Diary;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\ValidationException;
 
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\DiaryController;
 
 /*
 |--------------------------------------------------------------------------
@@ -27,6 +29,11 @@ Route::middleware('auth:sanctum')->post('category/create', [CategoryController::
 Route::middleware('auth:sanctum')->post('category/detail', [CategoryController::class, 'detail']);
 Route::middleware('auth:sanctum')->post('category/update', [CategoryController::class, 'update']);
 Route::middleware('auth:sanctum')->post('category/delete', [CategoryController::class, 'delete']);
+
+// 다이어리
+Route::middleware('auth:sanctum')->post('diary', [DiaryController::class, 'list']);
+Route::middleware('auth:sanctum')->post('diary/create', [DiaryController::class, 'create']);
+Route::middleware('auth:sanctum')->post('diary/detail', [DiaryController::class, 'detail']);
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();

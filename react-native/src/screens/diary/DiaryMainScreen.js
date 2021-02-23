@@ -54,7 +54,7 @@ function DiaryMainScreen( {navigation, route} ) {
         renderItem={({item}) =>
           <TouchableOpacity
             style={styles.flatlistItem}
-            onPress={() => navigation.navigate('CategoryUpdate', {category_id: item.category_id})}>
+            onPress={() => navigation.navigate('DiaryList', {category_id: item.category_id, name: item.name})}>
             <View  style={{width:"100%", padding: 25}}>
               <Text style={{fontSize: 16, alignSelf: 'flex-start', position: 'absolute', padding: 10}}>공개범위 | {item.open_scope}</Text>
               <TouchableOpacity 

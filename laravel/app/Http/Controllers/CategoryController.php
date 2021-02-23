@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Category;
+use App\Models\Diary;
 
 class CategoryController extends Controller
 {
@@ -59,6 +60,7 @@ class CategoryController extends Controller
    {
     $categoryId = $request -> only('category_id');
 
+    Diary::where('category_id', $categoryId)->delete();
     Category::where('category_id', $categoryId)->delete();
    }
 
