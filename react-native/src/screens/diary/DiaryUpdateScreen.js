@@ -64,7 +64,7 @@ export default function DiaryUpdateScreen({ navigation, route }) {
           // open_scope: `${openScope}`,
       })
         .then(response => {
-          navigation.navigate('DiaryList');
+          navigation.navigate('DiaryDetail', {diary_id: route.params?.diary_id, name: route.params?.name});
         })
         .catch(error => {
           console.log(error.response);
@@ -88,6 +88,8 @@ export default function DiaryUpdateScreen({ navigation, route }) {
             content: response.data.content,
           }
           setDiaryDetail(diaryResponse);
+          setTitle(diaryResponse.title);
+          setContent(diaryResponse.content);
           setLoading(false);
         })
         .catch(error => {
@@ -111,7 +113,7 @@ export default function DiaryUpdateScreen({ navigation, route }) {
             <Text style={{fontSize: 14, color: "#666666", padding: 20, paddingBottom: 0}}>일기제목</Text>
             <TextInput  
             style={{fontSize: 20, fontWeight: "bold", borderBottomWidth: 1, borderBottomColor: "#666666", padding: 5, marginLeft: 20, marginRight: 20}}
-              placeholder="일기제목을 입력하세요."
+            defaultValue= {diaryDetail.title}
               onChangeText={text => setTitle(text)}
               />
 
@@ -137,7 +139,7 @@ export default function DiaryUpdateScreen({ navigation, route }) {
               padding: 5,
               marginLeft: 20,
               marginRight: 20}}
-              placeholder="일기내용을 입력하세요."
+              defaultValue= {diaryDetail.content}
             onChangeText={text => setContent(text)}
             
               />

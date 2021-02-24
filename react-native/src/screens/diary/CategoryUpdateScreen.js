@@ -61,6 +61,7 @@ import axios from 'axios';
     };
 
     useEffect(() => {
+
       const unsubscribe = navigation.addListener('focus', () => {
 
       axios.defaults.headers.common['Authorization'] = `Bearer ${user.token}`;
@@ -75,6 +76,7 @@ import axios from 'axios';
             category_id : response.data.category_id,
           }
           setCategoryDetail(categoryResponse);
+          setName(categoryResponse.name);
           setLoading(false);
         })
         .catch(error => {

@@ -34,6 +34,8 @@ Route::middleware('auth:sanctum')->post('category/delete', [CategoryController::
 Route::middleware('auth:sanctum')->post('diary', [DiaryController::class, 'list']);
 Route::middleware('auth:sanctum')->post('diary/create', [DiaryController::class, 'create']);
 Route::middleware('auth:sanctum')->post('diary/detail', [DiaryController::class, 'detail']);
+Route::middleware('auth:sanctum')->post('diary/update', [DiaryController::class, 'update']);
+Route::middleware('auth:sanctum')->post('diary/delete', [DiaryController::class, 'delete']);
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();

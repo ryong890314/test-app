@@ -40,4 +40,24 @@ class DiaryController extends Controller
     return Diary::where('diary_id', $diaryId)->first();
    }
 
+   public function update(Request $request)
+   {
+    $diaryId = $request -> only('diary_id');
+    $title = $request -> title;
+    $content = $request -> content;
+
+     Diary::where('diary_id', $diaryId)->update(
+       ['title' => $title, 'content' => $content]
+     );
+
+     return $title;
+   }
+
+   public function delete(Request $request)
+   {
+    $diaryId = $request -> only('diary_id');
+
+    Diary::where('diary_id', $diaryId)->delete();
+   }
+
 }
