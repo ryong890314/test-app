@@ -1,7 +1,7 @@
 
-function Menu() {
+function SubMenu() {
   return (
-    <div className="Menu">
+    <div className="SubMenu">
       <ul>
         <li>대시보드</li>
         <li>통계</li>
@@ -13,4 +13,4 @@ function Menu() {
   );
 }
 
-export default Menu;
+export default SubMenu;
