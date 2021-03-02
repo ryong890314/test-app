@@ -35,11 +35,55 @@ ul {
   list-style:none;
   /* padding: 20px; */
 }
+.Menu ul {
+  padding-top: 20px;
+}
+.Menu li {
+ padding: 20px;
+}
+
+.Menu a {
+  /* height:20px; */
+  display: inline-block;
+  text-decoration: none;
+  color: #a6a6a6;
+}
+.Menu .menu_icon {
+  display: inline-block;
+  text-align: center;
+  width: 20px;
+  padding-right: 10px;
+}
+.Menu .menu_title {
+  display: inline-block;
+  line-height: 20px;
+}
 
 .SubMenu {
   border-right: 1px solid #EAEAEA;
   max-width: 200px;
   list-style:none;
+}
+.SubMenu .title {
+  font-size: 18px;
+  font-weight: 800;
+  margin: 0;
+  padding: 40px 20px 25px;
+}
+.SubMenu .subtitle,
+.SubMenu .nav_li {
+  padding: 10px 20px;
+}
+.SubMenu .subtitle,
+.SubMenu .nav_li a {
+  font-size: 14px;
+  font-weight: 800;
+  width: 100%;
+  text-decoration: none;
+  color: #a6a6a6;
+}
+.SubMenu .nav_li a {
+  color: #000000;
 }
 
 .Main {
@@ -48,15 +92,86 @@ ul {
 }
 
 .Header {
+  display: flex;
   border-radius: 0 10px 0 0;
   background-color: #ffffff;
-  border-bottom: 1px solid #EAEAEA;
+  /* border-bottom: 1px solid #EAEAEA; */
   height: 90px;
 }
-
-.Header .Title {
+.Header .title {
   font-size: 18px;
   font-weight: 800;
   margin: 0;
   padding: 40px 20px 25px;
+}
+.Header .option {
+  color: #a6a6a6;
+  font-size: 18px;
+  font-weight: 800;
+  margin-left: auto;
+  padding: 40px 20px 25px;
+}
+
+.SubHeader {
+  display: flex;
+  flex-direction: column;
+  background-color: #ffffff;
+  border-bottom: 1px solid #EAEAEA;
+  height: 90px;
+}
+.SubHeader .visit_ul {
+  display: inline-flex;
+  width: 100%;
+}
+.SubHeader .visit_li {
+  padding-left: 20px;
+  width: 120px;
+}
+.SubHeader .visit_li:last-child {
+  margin-left: auto;
+  text-align: right;
+  padding-right: 20px;
+  /* background-color: #a6a6a6; */
+}
+.SubHeader .visit_li .date {
+  color: #a6a6a6;
+}
+.SubHeader .visit_li .time {
+  font-size: 24px;
+  font-weight: 800;
+}
+
+.SubHeader .visit_li .date.dumy,
+.SubHeader .visit_li .time.dumy {
+  color: #efefef;
+}
+.SubHeader .stat_title {
+  font-size: 12px;
+  color: #a6a6a6;
+}
+.SubHeader .stat_text {
+  padding-top: 5px;
+  font-size: 18px;
+  font-weight: 800;
+  color: #000000;
+}
+.SubHeader .nav_ul {
+  flex-direction: column;
+  margin-top: auto;
+  width: 100%;
+  bottom: 0px;
+}
+.SubHeader .nav_li {
+  display: inline-flex;
+  text-align: center;
+  padding-left: 20px;
+  height: 30px;
+  width: 100px;
+}
+.SubHeader .nav_li a {
+  font-size: 14px;
+  font-weight: 800;
+  width: 100%;
+  text-decoration: none;
+  color: #a6a6a6;
 }
