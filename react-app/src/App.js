@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link, Route, Switch, BrowserRouter as Router } from "react-router-dom";
+import { Link, Route, Switch, Redirect, NavLink, BrowserRouter as Router } from "react-router-dom";
 import './App.css';
 import Dashboard from './Dashboard';
 import Statistics from './Statistics';
@@ -10,6 +10,10 @@ import { faTable, faChartPie, faUser, faCog, faBullhorn } from '@fortawesome/fre
 
 function App() {
 
+  const activeStyle = {
+    color: '#2B90D9',
+  };
+
   return (
     <Router>
       <div className="Container">
@@ -17,41 +21,57 @@ function App() {
         <div className="Menu">
           <ul>
             <li>
-              <Link to="/">
+              <NavLink to="/dashboard" activeStyle={activeStyle}>
               <span className="menu_icon"><FontAwesomeIcon icon={faTable} /></span>
               <span className="menu_title">대시보드</span>
-              </Link>
+              </NavLink>
             </li>
             <li>
-              <Link to="/statistics">
+              <NavLink to="/statistics" activeStyle={activeStyle}>
                 <span className="menu_icon"><FontAwesomeIcon icon={faChartPie} /></span>
                 <span className="menu_title">통계</span>
-              </Link>
+              </NavLink>
             </li>
             <li>
-              <Link to="/statistics">
+              <NavLink to="/customer" activeStyle={activeStyle}>
                 <span className="menu_icon"><FontAwesomeIcon icon={faUser} /></span>
                 <span className="menu_title">고객</span>
-              </Link>
+              </NavLink>
             </li>
             <li>
-              <Link to="/">
+              <NavLink to="/marketing" activeStyle={activeStyle}>
                 <span className="menu_icon"><FontAwesomeIcon icon={faBullhorn} /></span>
                 <span className="menu_title">마케팅</span>
-              </Link>
+              </NavLink>
             </li>
             <li>
-              <Link to="/statistics">
+              <NavLink to="/setting" activeStyle={activeStyle}>
                 <span className="menu_icon"><FontAwesomeIcon icon={faCog} /></span>
                 <span className="menu_title">설정</span>
-              </Link>
+              </NavLink>
             </li>
           </ul>
         </div>
        
         <Switch>
-          <Route exact path="/" component={Dashboard} />
-          <Route path="/statistics" component={Statistics} />
+          <Route exact path="/">
+            <Redirect to="/dashboard" />
+          </Route>
+          <Route path="/dashboard">
+            <Dashboard />
+          </Route>
+          <Route path="/statistics">
+            <Statistics />
+          </Route>
+          <Route path="/customer">
+            <Statistics />
+          </Route>
+          <Route path="/marketing">
+            <Dashboard />
+          </Route>
+          <Route path="/setting">
+            <Statistics />
+          </Route>
         </Switch>
         
       </div>

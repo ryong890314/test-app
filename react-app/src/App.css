@@ -1,6 +1,7 @@
 
 #root {
   padding: 20px;
+  
 }
 
 ul {
@@ -15,25 +16,23 @@ ul {
   background-color: #fafafa;
   border: 1px solid #EAEAEA;
   height: calc(100vh - 40px);
-  border-radius: 10px;
+  border-radius: 10px 10px 0 10px;
   margin: 0 auto;
   max-width: 1200px;
+  min-width: 1200px;
 }
 .Menu, .SubMenu, .Main {
   flex-grow: 1;
   flex-basis: 0;
 }
 .Menu {
-  /* display: inline-flex; */
   font-size: 14px;
   font-weight: 800;
   border-right: 1px solid #EAEAEA;
   border-radius: 10px 0 0 10px;
   background-color: #ffffff;
-  /* height: calc(100% - 40px); */
   max-width: 150px;
   list-style:none;
-  /* padding: 20px; */
 }
 .Menu ul {
   padding-top: 20px;
@@ -48,6 +47,8 @@ ul {
   text-decoration: none;
   color: #a6a6a6;
 }
+
+
 .Menu .menu_icon {
   display: inline-block;
   text-align: center;
@@ -88,14 +89,12 @@ ul {
 
 .Main {
   border-radius: 0 10px 10px 0;
-  /* background-color: #ffffff; */
 }
 
 .Header {
   display: flex;
   border-radius: 0 10px 0 0;
   background-color: #ffffff;
-  /* border-bottom: 1px solid #EAEAEA; */
   height: 90px;
 }
 .Header .title {
@@ -106,7 +105,7 @@ ul {
 }
 .Header .option {
   color: #a6a6a6;
-  font-size: 18px;
+  font-size: 24px;
   font-weight: 800;
   margin-left: auto;
   padding: 40px 20px 25px;
@@ -131,7 +130,6 @@ ul {
   margin-left: auto;
   text-align: right;
   padding-right: 20px;
-  /* background-color: #a6a6a6; */
 }
 .SubHeader .visit_li .date {
   color: #a6a6a6;
@@ -174,4 +172,32 @@ ul {
   width: 100%;
   text-decoration: none;
   color: #a6a6a6;
+}
+
+.SubHeader .nav_li a.current:after {
+  content: "";
+  display: block;
+  margin-top: 8px;
+  height: 5px;
+  background: #2B90D9;
+  width: 100%;
+}
+.MainPage {
+  /* background-color: #2B90D9; */
+  height: calc(100vh - 223px);
+  overflow: auto;
+  overflow-y:scroll;
+}
+
+.layout_1 {
+  flex-direction: column;
+  background-color: #ffffff;
+  border: 1px solid #eaeaea;
+  margin: 10px;
+  padding: 20px;
+}
+.layout_1 .title {
+  font-size: 14px;
+  font-weight: 800;
+  padding-bottom: 15px;
 }

@@ -1,9 +1,17 @@
 import ReactDOM from 'react-dom';
-import { Link, Route, Switch, BrowserRouter as Router } from "react-router-dom";
+import { Link, Route, Switch, BrowserRouter as Router, useParams,
+  useRouteMatch, NavLink, Redirect } from "react-router-dom";
 
 import DayPage from './DayPage';
 
 function SubHeader() {
+
+  let { path, url } = useRouteMatch();  
+
+  const activeStyle = {
+    color: '#2B90D9',
+  };
+
   return (
     <>
     <div className="SubHeader">
@@ -29,18 +37,29 @@ function SubHeader() {
       </ul>
 
       <ul className="nav_ul">
-        <li className="nav_li"><Link to="/daypage">일간</Link></li>
-        <li className="nav_li"><Link to="/">주간</Link></li>
-        <li className="nav_li"><Link to="/">월간</Link></li>
+        <li className="nav_li"><NavLink to={`${url}/day`} activeStyle={activeStyle} activeClassName="current">일간</NavLink></li>
+        <li className="nav_li"><NavLink to={`${url}/week`} activeStyle={activeStyle} activeClassName="current">주간</NavLink></li>
+        <li className="nav_li"><NavLink to={`${url}/month`} activeStyle={activeStyle} activeClassName="current">월간</NavLink></li>
       </ul>
 
     </div>
 
-    <div>
-      <div>day</div>
+    <div className="MainPage">
+      <Switch>
+        <Route exact path={path}>
+          <Redirect to={`${path}/day`} />
+        </Route>
+        <Route path={`${path}/day`}>
+          <DayPage />
+        </Route>
+        <Route path={`${path}/week`}>
+          <DayPage />
+        </Route>
+        <Route path={`${path}/month`}>
+          <DayPage />
+        </Route>
+      </Switch>
     </div>
-
-    
 
     </>
   );
